@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --color-page: #12100e;
+  --color-panel: #1b1815;
+  --color-raised: #2a2520;
+  --color-line: #2f2a25;
+  --color-heading: #f4efe6;
+  --color-muted: #a8a094;
+  --color-accent: #ffb703;
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --breakpoint-desk: 75rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-page);
+  color: var(--color-muted);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #12100e;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ---------- icon filters ---------- */
+.icon-light {
+  filter: brightness(0) invert(0.85);
+  transition: filter 0.3s ease;
+}
+.group:hover .icon-light {
+  filter: invert(75%) sepia(50%) saturate(1000%) hue-rotate(350deg)
+    brightness(110%) contrast(101%);
+}
+
+.icon-social {
+  filter: grayscale(1) invert(0.7);
+  transition: filter 0.3s ease;
+}
+a:hover > .icon-social {
+  filter: invert(75%) sepia(50%) saturate(1000%) hue-rotate(350deg)
+    brightness(110%) contrast(101%);
+}
+
+/* ---------- skills marquee ---------- */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
